@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f6f5f8;
+            display: flex;
+            justify-content: center;
+
+        }
+        .container{
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item{
+            background-color: white;
+            display: flex;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 20px;
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+        }
+
+        .item-text{
+            margin-left: 20px;
+        }
+
+        .item-text small{
+            color: grey;
+        }
+
+        .ic{
+            margin-top: 5px;
+            width: 50px;
+        }
+
+        #btn{
+            position: absolute;
+            border: 0;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 99;
+            bottom: 0;
+            right: 0;
+            margin-bottom: 50px;
+            margin-right: 100px;
+            background-color: #ea4c89;
+            color: white;
+            transition: 0.5s ease;
+            
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+        }
+
+        #btn:hover{
+            transition: 0.5s ease;
+            margin-bottom: 55px;
+            background-color: #ea4c89;
+        }
+
+    </style>
+    <div class="container" id="content">
+        <div class="item">
+            <i data-feather="check-circle" class="ic"></i>
+            <div class="item-text">
+                <h3 style="margin-bottom: 5px;">Mencuci piring</h3>
+                <small>oleh Faisal</small>
+            </div>
+        </div>
+        <div class="item">
+            <i data-feather="check-circle" class="ic"></i>
+            <div class="item-text">
+                <h3 style="margin-bottom: 5px;">Mencuci piring</h3>
+                <small>oleh Faisal</small>
+            </div>
+        </div>
+        <div class="item">
+            <i data-feather="check-circle" class="ic"></i>
+            <div class="item-text">
+                <h3 style="margin-bottom: 5px;">Mencuci piring</h3>
+                <small>oleh Faisal</small>
+            </div>
+        </div>
+    </div>
+    <button id="btn">Acak Tugas</button>
+
+    <script>
+        feather.replace();
+
+        function shuffle(arra1) {
+            let ctr = arra1.length;
+            let temp;
+            let index;
+            
+            // While there are elements in the array
+            while (ctr > 0) {
+                // Pick a random index
+                index = Math.floor(Math.random() * ctr);
+                // Decrease ctr by 1
+                ctr--;
+                // And swap the last element with it
+                temp = arra1[ctr];
+                arra1[ctr] = arra1[index];
+                arra1[index] = temp;
+            }
+            return arra1;
+        }
+
+        const tugas = [
+            {
+                nama: 'Menyapu',
+                img: ''
+            },
+            {
+                nama: 'ngepel',
+                img: ''
+            },
+            {
+                nama: 'cuci piring',
+                img: ''
+            },
+            {
+                nama: 'menjemur',
+                img: ''
+            }
+        ];
+
+        const anggota = {
+            faisal: tugas[0],
+            faqih: tugas[1],
+            asiah: tugas[2],
+            mayah: tugas[3]
+        };
+
+        const acak = () =>{
+            shuffle(tugas);
+            anggota.faisal = tugas[0];
+            anggota.faqih = tugas[1];
+            anggota.asiah = tugas[2];
+            anggota.mayah = tugas[3];
+        }
+
+        document.getElementById('btn').addEventListener('click', e => {
+            e.preventDefault();
+            acak();
+
+            let html = '';
+
+            Object.keys(anggota).forEach( a => {
+                html = html + `
+                <div class="item">
+                    <i data-feather="check-circle" class="ic"></i>
+                    <div class="item-text">
+                        <h3 style="margin-bottom: 5px;"> ${anggota[a].nama}</h3>
+                        <small>Oleh ${a}</small>
+                    </div>
+                </div>
+                `;
+            });
+
+            document.getElementById('content').innerHTML = html;
+            feather.replace();
+        });
+    </script>
+</body>
+</html>

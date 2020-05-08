@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1,h2,h3,h4,h5,h6{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f6f5f8;           
+        }
+
+
+        .all{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .container{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item{
+            background-color: white;
+            display: flex;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 20px;
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            -webkit-animation-name: mymove;  /* Chrome, Safari, Opera */
+            -webkit-animation-duration: 2s;  /* Chrome, Safari, Opera */
+            animation-name: mymove;
+            animation-duration: 2s;
+        }
+        
+        .item-text{
+            margin-left: 20px;
+        }
+        
+        .item-text small{
+            color: grey;
+        }
+        
+        .ic{
+            margin-top: 5px;
+            width: 50px;
+        }
+        
+        #cb{
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+        }
+      
+        
+        /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        @keyframes mymove {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        nav{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul{
+            display: flex;
+            justify-content: space-evenly;
+            width: 60%;
+            padding: 10px;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+        }
+
+        nav ul li{
+            text-decoration: none;
+            float: left;
+            list-style: none;
+            margin: 10px;
+            
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color: #bababa;
+        }
+
+        .active{
+            color: #ea4c89;
+        }
+        @media only screen and (max-width: 768px) {
+            .container{
+                width: 80%;
+            }
+        }
+    </style>
+    <nav>
+        <ul>
+            <li><a href="index.html"><i data-feather="home"></i></a></li>      
+            <li><a href="/coming.html"><i data-feather="dollar-sign"></i></a></li>
+            <li><a href="/about.html" class="active"><i data-feather="info"></i></a></li>
+        </ul>
+    </nav>
+    <div class="all">
+        <div class="container" id="content">
+            <div class="item">
+                <i data-feather="info" class="ic"></i>
+                <div class="item-text">
+                    <h3 style="margin-bottom: 5px;">Asal-asalan App</h3>
+                    <small>Version 1.0.0</small>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        feather.replace();
+
+    </script>
+</body>
+</html>

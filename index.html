@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1,h2,h3,h4,h5,h6{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f6f5f8;           
+        }
+
+
+        .all{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .container{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item{
+            background-color: white;
+            display: flex;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 20px;
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            -webkit-animation-name: mymove;  /* Chrome, Safari, Opera */
+            -webkit-animation-duration: 2s;  /* Chrome, Safari, Opera */
+            animation-name: mymove;
+            animation-duration: 2s;
+        }
+        
+        .item-text{
+            margin-left: 20px;
+        }
+        
+        .item-text small{
+            color: grey;
+        }
+        
+        .ic{
+            margin-top: 5px;
+            width: 50px;
+        }
+        
+        #cb{
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        #btn{
+            position: absolute;
+            border: 0;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 99;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 50px;
+            margin-right: 50px;
+            background-color: #ea4c89;
+            color: white;
+            transition: all 0.5s ease;
+            
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+        }
+
+        #copy{
+            position: absolute;
+            border: 0;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 99;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 130px;
+            margin-right: 50px;
+            background-color: #03fc8c;
+            color: white;
+            transition: all 0.5s ease;
+            
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+        }
+        
+        #btn:hover{
+            transition: all 0.5s ease;
+            margin-bottom: 55px;
+            background-color: #ea4c89;
+        }
+
+        #copy:hover{
+            transition: all 0.5s ease;
+            margin-bottom: 140px;
+        }
+        
+        /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        @keyframes mymove {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        nav{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul{
+            display: flex;
+            justify-content: space-evenly;
+            width: 60%;
+            padding: 10px;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+
+            -webkit-box-shadow: -1px 4px 24px -8px rgba(29, 26, 26, 0.3);
+            -moz-box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+            box-shadow: -1px 4px 24px -8px rgba(0,0,0,0.3);
+        }
+
+        nav ul li{
+            text-decoration: none;
+            float: left;
+            list-style: none;
+            margin: 10px;
+            
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color: #bababa;
+        }
+
+        .active{
+            color: #ea4c89;
+        }
+        @media only screen and (max-width: 768px) {
+            .container{
+                width: 80%;
+            }
+        }
+    </style>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active"><i data-feather="home"></i></a></li>      
+            <li><a href="/coming.html"><i data-feather="dollar-sign"></i></a></li>
+            <li><a href="/about.html"><i data-feather="info"></i></a></li>
+        </ul>
+    </nav>
+    <div class="all">
+        <div class="container" id="content">
+            
+        </div>
+        <textarea id="cb"></textarea>
+        <button id="btn"><i data-feather="repeat" ></i></button>
+        <button id="copy"><i data-feather="clipboard" ></i></button>
+    </div>
+    
+    <script>
+        feather.replace();
+        setTimeout(()=>{
+            ran();
+        }, 500);
+        function shuffle(arra1) {
+            let ctr = arra1.length;
+            let temp;
+            let index;
+            
+            // While there are elements in the array
+            while (ctr > 0) {
+                // Pick a random index
+                index = Math.floor(Math.random() * ctr);
+                // Decrease ctr by 1
+                ctr--;
+                // And swap the last element with it
+                temp = arra1[ctr];
+                arra1[ctr] = arra1[index];
+                arra1[index] = temp;
+            }
+            return arra1;
+        }
+        
+        const tugas = [
+        {
+            nama: 'Mencuci piring dan merapikan dapur setelah makan sahur',
+            img: ''
+        },
+        {
+            nama: 'Merapihkan rumah dan ngepel, membersihkan teras ',
+            img: ''
+        },
+        {
+            nama: 'Mencuci, menjemur dan melipat baju',
+            img: ''
+        },
+        {
+            nama: 'Menyiapkan makanan untuk Ifthor dan  membereskan',
+            img: ''
+        },
+        {
+            nama: 'Mencuci piring malam dan merapihkan dapur',
+            img: ''
+        }
+        ];
+        
+        const anggota = {
+            faisal: tugas[0],
+            faqih: tugas[1],
+            asiah: tugas[2],
+            mayah: tugas[3],
+            zuraidah: tugas[4]
+        };
+        
+        const acak = () =>{
+            shuffle(tugas);
+
+            Object.keys(anggota).forEach((a, i) => {
+                anggota[a] = tugas[i];
+                console.log(anggota[a]);
+            })
+        }
+
+        document.getElementById('copy').addEventListener('click', () => {
+              /* Get the text field */
+                var copyText = document.getElementById("cb");
+
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+        });
+
+        const ran = () => {
+            acak();
+            
+            let html = '';
+            let doc = '';
+            
+            Object.keys(anggota).forEach( (a, index) => {
+                html = html + `
+                <div class="item">
+                    <i data-feather="check-circle" class="ic"></i>
+                    <div class="item-text">
+                        <h5 style="margin-bottom: 5px;"> ${anggota[a].nama}</h5>
+                        <small>Oleh ${a}</small>
+                    </div>
+                </div>
+                `;
+
+                doc = doc + `${index+1}. ${anggota[a].nama} - ${a}
+`;
+            });
+            
+            document.getElementById('content').innerHTML = html;
+            document.getElementById('cb').innerHTML = doc;
+            feather.replace();
+        };
+        
+        document.getElementById('btn').addEventListener('click', e => {
+            e.preventDefault();
+            ran();
+            
+        });
+    </script>
+</body>
+</html>
